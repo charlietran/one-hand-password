@@ -8,6 +8,8 @@ Made for myself to help think of secure multi-word passwords that can easily be 
 
 ```
 # list of left-side-words
+# left side of keeb generates more common words, so this outputs a random
+#   sampling of 256 of them
 $ python3 onehand.py left
 
 # list of right-side-words
