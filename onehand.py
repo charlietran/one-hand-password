@@ -1,8 +1,10 @@
 from random import sample
 import sys
 
-min_length = 4
-max_length = 8
+file = r'common.txt'
+# file = r'words_alpha.txt'
+min_length = 10
+max_length = 20
 left_keys = set(list('qwertasdfgzxcvb'))
 right_keys = set(list('tyuiopghjklvbnm'))
 valid_words = set()
@@ -15,8 +17,7 @@ else:
     print('## Left handed')
 
 # get all left hand passwords
-with open(r'common.txt', 'r') as ins_file:
-#with open(r'words_alpha.txt', 'r') as ins_file:
+with open(file, 'r') as ins_file:
     for row in ins_file.read().split():
         keys = set(list(row))
         if keyset.issuperset(keys):
@@ -32,6 +33,9 @@ for word in valid_words:
 choices = filter(lambda x: len(x) >= min_length and len(x) <= max_length, valid_words)
 
 sorted_list = list(choices)
+sorted_list.sort()
+sorted_list.sort(key=len, reverse=False)
+
 if len(sorted_list) < 256:
     final_list = sorted_list
 else:
